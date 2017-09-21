@@ -1,0 +1,35 @@
+# project: cj7rt2bzl060m01049wx6hnk7
+# version: 4
+
+type User implements Node {
+  id: ID! @isUnique
+  username: String!
+  password: String!
+  firstName: String!
+  lastName: String!
+  events: [Event!]! @relation(name: "UserOnEvent")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Event implements Node {
+  id: ID! @isUnique
+  title: String!
+  description: String!
+  eventdate: DateTime!
+  organizer: User! @relation(name: "UserOnEvent")
+  capacity: Int!
+  eventImage: String!
+  listAttends: [String!]
+}
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID! @isUnique
+  name: String!
+  secret: String! @isUnique
+  size: Int!
+  updatedAt: DateTime!
+  url: String! @isUnique
+}

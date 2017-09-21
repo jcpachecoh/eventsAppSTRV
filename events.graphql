@@ -1,0 +1,16 @@
+type User {
+    id: ID! @isUnique
+    username: String!
+    password: String!
+    events: [Event!]! @relation(name: "UserOnEvent")
+}
+
+type Event {
+    id: ID! @isUnique
+    title: String!
+    description: String!
+    eventdate: DateTime!
+    organizer: User! @relation(name: "UserOnEvent")
+    capacity: Int!
+    listAttends:  [String!]! 
+}
